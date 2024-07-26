@@ -9,4 +9,4 @@ void swap(int *lhs, int *rhs)
 	return;
 }
 
-#endif
+#endif // CORE_H

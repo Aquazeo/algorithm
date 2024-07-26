@@ -21,4 +21,13 @@ void print_array(int A[], int p, int q)
 	return;
 }
 
+void char_to_int_array(char **C, int A[], int p, int q)
+{
+	for (int i = p; i <= q; i ++)
+	{
+		A[i] = atoi(C[i]);
+	}
+	return;
+}
+
 #endif // ARRAYIO_H

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "core.h"
 #include "heap.h"
 
@@ -53,4 +54,11 @@ void heapsort(struct heap *H, int n)
 		max_heapfy(H, 1);
 	}
 	return;
+}
+
+int max_heap_maximum(struct heap *H)
+{
+	if (H->heap_size < 1)
+		fprintf(stderr, "heap underflow\n");
+	return H->A[1];
 }

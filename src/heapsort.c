@@ -19,6 +19,7 @@ int main(void)
 	print_array(H.A, 1, num);	
 	puts("");
 	//printf("%d", H.A[0]);
+	//printf("%d", H.heap_size);
 
 	return 0;
 }
