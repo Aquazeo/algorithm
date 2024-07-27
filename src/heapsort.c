@@ -16,8 +16,7 @@ int main(void)
 	
 	scan_array(H.A, 1, num);
 	heapsort(&H, num);
-	print_array(H.A, 1, num);	
-	puts("");
+	print_array(H.A, 1, num);
 	//printf("%d", H.A[0]);
 	//printf("%d", H.heap_size);
 

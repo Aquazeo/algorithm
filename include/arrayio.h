@@ -2,6 +2,7 @@
 #define ARRAYIO_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void scan_array(int A[], int p, int q)
 {
@@ -18,6 +19,7 @@ void print_array(int A[], int p, int q)
 	{
 		printf("%d ", A[i]);
 	}
+	puts("");
 	return;
 }
 
