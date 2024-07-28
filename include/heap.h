@@ -10,12 +10,16 @@ struct heap
 };
 
 // given the index i of a node
-// compute the indices of its parent, left child, and right child
-int parent(int i);
+// compute the index of its parent
+int heap_parent(int i);
 
-int left(int i);
+// given the index i of a node
+// compute the index of its left child
+int heap_left(int i);
 
-int right(int i);
+// given the index i of a node
+// compute the index of its right child
+int heap_right(int i);
 
 // maintaining the max-heap property
 void max_heapfy(struct heap *H, int i);
@@ -26,5 +30,10 @@ void build_max_heap(struct heap *H, int n);
 void heapsort(struct heap *H, int n);
 
 int max_heap_maximum(struct heap *H);
+
+struct max_priority_queue
+{
+    
+};
 
 #endif // HEAP_H

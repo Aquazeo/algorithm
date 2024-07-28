@@ -3,10 +3,10 @@
 
 void swap(int *lhs, int *rhs)
 {
-	int temp = *lhs;
-	*lhs = *rhs;
-	*rhs = temp;
-	return;
+    int temp = *lhs;
+    *lhs = *rhs;
+    *rhs = temp;
+    return;
 }
 
 #endif // CORE_H

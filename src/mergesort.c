@@ -4,9 +4,9 @@
 
 int main()
 {
-	int num;
-	printf("Enter the number of elements: ");
-	scanf("%d", &num);
+    int num;
+    printf("Enter the number of elements: ");
+    scanf("%d", &num);
 
     int A[num];
 
