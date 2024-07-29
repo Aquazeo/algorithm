@@ -9,4 +9,12 @@ void swap(int *lhs, int *rhs)
     return;
 }
 
+void swap_ptr(void **lhs, void **rhs)
+{
+    void *temp = *lhs;
+    *lhs = *rhs;
+    *rhs = temp;
+    return;
+}
+
 #endif // CORE_H
