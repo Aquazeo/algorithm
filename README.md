@@ -6,22 +6,18 @@ classical algorithms and data structures
 
 ## II Sorting and Order Statics
 
-### Heapsort
-- Heaps
-- Priority queues
-
-### Quicksort
-
-### Sorting in Linear Time
+- Heapsort
+    - Heaps
+    - Priority queues
+- Quicksort
+- Sorting in Linear Time
 
 
 ## III Data Structures
 
-### Hash Tables
-
-### Binary Search Trees
-
-### Red-Black Trees
+- Hash Tables
+- Binary Search Trees
+- Red-Black Trees
 
 
 ## IV Advanced Design and Analysis Techniques
