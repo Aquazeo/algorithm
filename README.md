@@ -1,10 +1,10 @@
 # algorithm
 classical algorithms and data structures
 
-## Foundations
+## I Foundations
 
 
-## Sorting and Order Statics
+## II Sorting and Order Statics
 
 ### Heapsort
 - Heaps
@@ -15,7 +15,7 @@ classical algorithms and data structures
 ### Sorting in Linear Time
 
 
-## Data Structures
+## III Data Structures
 
 ### Hash Tables
 
@@ -24,10 +24,10 @@ classical algorithms and data structures
 ### Red-Black Trees
 
 
-## Advanced Design and Analysis Techniques
+## IV Advanced Design and Analysis Techniques
 
 
-## Advanced Data Structures
+## V Advanced Data Structures
 
 
-## Graph Algorithms
+## VI Graph Algorithms
