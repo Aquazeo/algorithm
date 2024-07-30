@@ -72,6 +72,9 @@ int max_heap_extract_max(struct heap *H)
     return max;
 }
 
+// each exchange operation typically requires three assignments
+// can use the idea of the inner loop of insertion-sort
+// to reduce the three assignments to just one assignment 
 void max_heap_increase_key(struct heap *H, int i, int k)
 {
     if (k < H->A[i])
@@ -97,9 +100,9 @@ void max_heap_insert(struct heap *H, int x, int n)
     return;
 }
 
-/* max priority queue */
+/* max-priority queue */
 
-void max_pq_heapfy(max_pq *Q, int i)
+void max_pq_heapfy(pq *Q, int i)
 {
     int l = heap_left(i);
     int r = l + 1;
@@ -118,7 +121,7 @@ void max_pq_heapfy(max_pq *Q, int i)
     return;
 }
 
-void build_max_pq(max_pq *Q, int n)
+void build_max_pq(pq *Q, int n)
 {
     Q->size = n;
     for (int i = n >> 1; i >= 1; i --)
@@ -126,14 +129,14 @@ void build_max_pq(max_pq *Q, int n)
     return;
 }
 
-struct pq_item *max_pq_maximum(max_pq *Q)
+struct pq_item *max_pq_maximum(pq *Q)
 {
     if (Q->size < 1)
         fprintf(stderr, "heap underflow\n");
     return Q->A[1];
 }
 
-struct pq_item *max_pq_extract_max(max_pq *Q)
+struct pq_item *max_pq_extract_max(pq *Q)
 {
     struct pq_item *max = max_pq_maximum(Q);
     Q->A[1] = Q->A[Q->size];
@@ -142,22 +145,34 @@ struct pq_item *max_pq_extract_max(max_pq *Q)
     return max;
 }
 
-void max_pq_increase_key(max_pq *Q, int i, int k)
+void max_pq_increase_key(pq *Q, int i, int k)
 {
     if (k < Q->A[i]->key)
         fprintf(stderr, "new key is smaller than current key\n");
 
     
     Q->A[i]->key = k;
-    while (i > 1 && Q->A[heap_parent(i)]->key < Q->A[i]->key)
+    /* while (i > 1 && Q->A[heap_parent(i)]->key < Q->A[i]->key)
     {
         swap_ptr((void *)&Q->A[i], (void *)&Q->A[heap_parent(i)]);
         i = heap_parent(i);
+    } */
+    
+    pq_item *t = Q->A[i];
+    int p = heap_parent(i);
+    int key = Q->A[i]->key;
+    while (p > 0 && Q->A[p]->key < key)
+    {
+        Q->A[i] = Q->A[p];
+        i = p;
+        p = heap_parent(p);
     }
+    Q->A[i] = t;
+
     return;
 }
 
-void max_pq_insert(max_pq *Q, pq_item *x, int n)
+void max_pq_insert(pq *Q, pq_item *x, int n)
 {
     if (Q->size == n)
         fprintf(stderr, "heap overflow\n");
@@ -170,9 +185,9 @@ void max_pq_insert(max_pq *Q, pq_item *x, int n)
     return;
 }
 
-/* min priority queue */
+/* min-priority queue */
 
-void min_pq_heapfy(min_pq *Q, int i)
+void min_pq_heapfy(pq *Q, int i)
 {
     int l = heap_left(i);
     int r = l + 1;
@@ -191,7 +206,7 @@ void min_pq_heapfy(min_pq *Q, int i)
     return;
 }
 
-void build_min_pq(min_pq *Q, int n)
+void build_min_pq(pq *Q, int n)
 {
     Q->size = n;
     for (int i = n >> 1; i >= 1; i --)
@@ -199,14 +214,14 @@ void build_min_pq(min_pq *Q, int n)
     return;
 }
 
-struct pq_item *min_pq_minimum(min_pq *Q)
+struct pq_item *min_pq_minimum(pq *Q)
 {
     if (Q->size < 1)
         fprintf(stderr, "heap underflow\n");
     return Q->A[1];
 }
 
-struct pq_item *min_pq_extract_min(min_pq *Q)
+struct pq_item *min_pq_extract_min(pq *Q)
 {
     struct pq_item *min = min_pq_minimum(Q);
     Q->A[1] = Q->A[Q->size];
@@ -215,22 +230,34 @@ struct pq_item *min_pq_extract_min(min_pq *Q)
     return min;
 }
 
-void min_pq_decrease_key(min_pq *Q, int i, int k)
+void min_pq_decrease_key(pq *Q, int i, int k)
 {
     if (k > Q->A[i]->key)
         fprintf(stderr, "new key is larger than current key\n");
 
     
     Q->A[i]->key = k;
-    while (i > 1 && Q->A[heap_parent(i)]->key > Q->A[i]->key)
+    /* while (i > 1 && Q->A[heap_parent(i)]->key > Q->A[i]->key)
     {
         swap_ptr((void *)&Q->A[i], (void *)&Q->A[heap_parent(i)]);
         i = heap_parent(i);
+    } */
+
+    pq_item *t = Q->A[i];
+    int p = heap_parent(i);
+    int key = Q->A[i]->key;
+    while (p > 0 && Q->A[p]->key > key)
+    {
+        Q->A[i] = Q->A[p];
+        i = p;
+        p = heap_parent(p);
     }
+    Q->A[i] = t;
+
     return;
 }
 
-void min_pq_insert(min_pq *Q, pq_item *x, int n)
+void min_pq_insert(pq *Q, pq_item *x, int n)
 {
     if (Q->size == n)
         fprintf(stderr, "heap overflow\n");

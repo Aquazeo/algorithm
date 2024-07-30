@@ -8,13 +8,13 @@ struct function
     int x, y;
 };
 
-min_pq pq;
+struct priority_queue q;
 
 int main()
 {
     int n, m;
     scanf("%d%d", &n, &m);
-    pq.A = (struct pq_item **)malloc(n * sizeof(struct pq_item *));
+    q.A = (struct pq_item **)malloc(n * sizeof(struct pq_item *));
 
     struct function *f;
     struct pq_item *item;
@@ -28,7 +28,7 @@ int main()
         item = (struct pq_item *)malloc(sizeof(struct pq_item));
         item->key = f->y;
         item->data = (void *)f;
-        min_pq_insert(&pq, item, n);
+        min_pq_insert(&q, item, n);
     }
 
     int ans[m];
@@ -36,7 +36,7 @@ int main()
     struct pq_item *max;
     while (index < m)
     {
-        max = min_pq_extract_min(&pq);
+        max = min_pq_extract_min(&q);
         ans[index] = max->key;
         index ++;
 
@@ -44,7 +44,7 @@ int main()
         func->x ++;
         func->y = func->A * func->x * func->x + func->B * func->x + func->C;
         max->key = func->y;
-        min_pq_insert(&pq, max, n);
+        min_pq_insert(&q, max, n);
     }
 
     for (int i = 0; i < m; i ++)
